@@ -51,6 +51,7 @@ class ExerciseState:
                 self.input_text = self.input_text[:-1]
             elif event.key == pygame.K_ESCAPE:
                 # Skip exercise (lose points)
+                self.game.clear_pending_stone()
                 self.game.change_state('playing')
             else:
                 # Add character to input
@@ -65,7 +66,9 @@ class ExerciseState:
         if self.input_text.strip().lower() == self.current_exercise['answer'].lower():
             self.feedback = "CORRECT! Well done!"
             self.feedback_color = GREEN
+            # Award points for the exercise and collect the stone
             self.game.complete_exercise()
+            self.game.collect_stone()
             # Mark exercise as completed and start a short timer in case the
             # player does not continue manually
             self.exercise_complete = True
