@@ -1,0 +1,85 @@
+ASSETS STRUCTURE - Graphics Files Needed
+========================================
+
+All images should be PNG format with transparency where appropriate.
+Maintain the 32-bit retro pixel art style.
+
+CHARACTER SPRITES (32x48 pixels):
+---------------------------------
+assets/graphics/characters/
+├── lila_idle.png          # Standing still (lilac hair, pink shirt)
+├── lila_walk.png          # Walking animation (4 frames)
+├── lila_jump.png          # Jumping/falling
+└── enemy_redcoat.png      # British soldier enemy
+
+BACKGROUNDS (1280x720 pixels):
+------------------------------
+assets/graphics/backgrounds/
+├── philadelphia_1776.png   # Colonial era street scene
+├── civil_war_1865.png     # Battlefield/countryside
+└── civil_rights_1963.png  # 1960s city street
+
+OBJECTS:
+--------
+assets/graphics/objects/
+├── time_stone.png         # 32x32, golden diamond shape, glowing
+├── portal_locked.png      # 60x70, dark stone archway with lock
+├── portal_open.png        # 60x70, swirling purple vortex
+├── platform_cobblestone.png # Tileable texture
+├── platform_wood.png      # Tileable wooden platform
+├── colonial_building.png  # 80x60, brick building
+├── liberty_bell.png       # 40x50, cracked bell
+├── street_lamp.png        # 20x60, colonial lamp post
+├── tree.png              # Various sizes
+├── windmill.png          # 60x80
+└── time_hole.png         # Black void with glitch effect border
+
+UI ELEMENTS:
+------------
+assets/graphics/ui/
+├── heart_full.png        # 20x20, red heart for lives
+├── heart_empty.png       # 20x20, dark heart outline
+├── button_normal.png     # 200x50, brown button
+├── button_hover.png      # 200x50, golden button
+├── menu_background.png   # 1280x720, stylized title screen
+├── textbox.png          # Dialog box with ornate border
+└── stone_icon.png       # 16x16, for HUD
+
+CUTSCENE ELEMENTS:
+------------------
+assets/graphics/cutscene/
+├── quinn_silhouette.png  # Professor Quinn shadow
+├── time_map.png         # Glowing timeline visualization
+├── chronos_shadow.png   # Villain silhouette
+└── watch_closeup.png    # Detailed pocket watch
+
+EFFECTS:
+--------
+assets/graphics/effects/
+├── particle_sparkle.png  # For stone collection
+├── portal_swirl.png     # Animated portal effect
+└── time_glitch.png      # Distortion effect
+
+FONT:
+-----
+assets/fonts/
+└── PressStart2P.ttf     # 8-bit style font (download from Google Fonts)
+
+COLOR PALETTE:
+--------------
+- Lila's hair: #DDA0DD (lilac)
+- Lila's shirt: #FF69B4 (hot pink)
+- Sky: #87CEEB (sky blue)
+- Gold/UI: #FFD700
+- Time stones: #FFD700 with glow
+- Enemies: #DC143C (crimson)
+- Platforms: #8B4513 (saddle brown)
+- Portal: #9370DB (medium purple)
+
+NOTES:
+------
+1. All sprites should have clean pixel art with no anti-aliasing
+2. Use limited color palettes for authentic retro feel
+3. Background elements can have parallax layers
+4. Consider sprite sheets for animations
+5. Time period authenticity in background details

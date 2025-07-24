@@ -1,0 +1,142 @@
+# Quick Start Guide - The Time Guardian
+
+## 🚀 Getting Started in 5 Minutes
+
+### Step 1: Install Python
+- Download Python 3.8+ from [python.org](https://www.python.org/)
+- During installation, check "Add Python to PATH"
+
+### Step 2: Open Command Prompt
+- Press `Win + R`, type `cmd`, press Enter
+- Navigate to game folder:
+```bash
+cd C:\Users\Tom\Dropbox\english_game_timetravel
+```
+
+### Step 3: Quick Setup
+Run these commands in order:
+```bash
+python setup_project.py
+pip install -r requirements.txt
+python create_assets.py
+python test_installation.py
+```
+
+### Step 4: Play!
+```bash
+python main.py
+```
+Or double-click `run_game.bat`
+
+## 🎮 Controls
+
+| Key | Action |
+|-----|--------|
+| ← → or A/D | Move |
+| Space or ↑ | Jump |
+| Enter | Submit answer |
+| ESC | Menu/Back |
+
+## 📚 Grammar Exercises
+
+### Level 1 - Philadelphia 1776 (First Conditional)
+- Pattern: If + present simple, will + verb
+- Example: "If they unite, they will win"
+
+### Level 2 - Civil War 1865 (Second Conditional)
+- Pattern: If + past simple, would + verb
+- Example: "If peace came, families would reunite"
+
+### Level 3 - Civil Rights 1963 (Mixed)
+- Various conditional types
+- Focus on correct verb forms
+
+## 🛠️ Troubleshooting
+
+### "Python not recognized"
+- Reinstall Python with "Add to PATH" checked
+- Or use full path: `C:\Python39\python.exe main.py`
+
+### "Module not found"
+```bash
+pip install pygame pygame-menu pillow
+```
+
+### Game runs slowly
+- Close other programs
+- In `settings.py`, change `FPS = 60` to `FPS = 30`
+
+### Black screen
+- Make sure you're in the right folder
+- Run `python setup_project.py` first
+
+## 🎨 Customizing Graphics
+
+1. **Replace placeholder images** in `assets/graphics/`
+2. **Recommended sizes**:
+   - Characters: 32x48 pixels
+   - Platforms: Any width x 20-100 height
+   - Backgrounds: 1280x720 pixels
+
+3. **Tools**:
+   - [Aseprite](https://www.aseprite.org/) - Best for pixel art
+   - [GIMP](https://www.gimp.org/) - Free alternative
+   - [Piskel](https://www.piskelapp.com/) - Online editor
+
+## 🎵 Adding Sounds
+
+Place these files in `assets/sounds/`:
+- `jump.wav` - Jump sound
+- `collect_stone.wav` - Collecting stones
+- `enemy_hit.wav` - Hitting enemies
+- `background_music.ogg` - Background music
+
+## 📝 Creating New Levels
+
+1. Copy `game/levels/level1.py` to `level4.py`
+2. Edit the level data:
+```python
+LEVEL_4 = {
+    'title': 'YOUR TITLE',
+    'platforms': [...],
+    'stones': [...],
+    'exercises': [...]
+}
+```
+3. Add to `level_manager.py`
+
+## 🐛 Debug Mode
+
+In `main.py`, add after imports:
+```python
+DEBUG = True
+```
+
+This shows:
+- FPS counter
+- Collision boxes
+- Player coordinates
+
+## 📱 Sharing Your Game
+
+1. **Zip the entire folder**
+2. **Include these instructions**:
+   - Install Python 3.8+
+   - Run `pip install -r requirements.txt`
+   - Run `python main.py`
+
+## 💡 Tips
+
+- Collect all stones before reaching the portal
+- Take your time with grammar exercises
+- Jump at the edge of platforms for longer jumps
+- Enemies follow patterns - learn them!
+
+## 🆘 Need Help?
+
+1. Check `README.md` for detailed info
+2. Run `python test_installation.py` to verify setup
+3. Look for error messages in the console
+
+---
+**Have fun learning and playing!** 🎮📚
