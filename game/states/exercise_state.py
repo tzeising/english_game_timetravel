@@ -18,6 +18,8 @@ class ExerciseState:
         self.feedback_color = WHITE
         self.font = pygame.font.Font(None, 24)
         self.title_font = pygame.font.Font(None, 32)
+        # Indicates whether the current exercise was answered correctly
+        self.exercise_complete = False
 
     def set_stone(self, stone_id):
         """Set which stone's exercise to show"""
@@ -26,6 +28,7 @@ class ExerciseState:
         self.current_exercise = level_data['exercises'][stone_id]
         self.input_text = ""
         self.feedback = ""
+        self.exercise_complete = False
 
     def enter(self):
         """Called when entering this state"""
@@ -38,7 +41,11 @@ class ExerciseState:
     def handle_events(self, event):
         """Handle input events"""
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_RETURN:
+            if self.exercise_complete and event.key == pygame.K_RETURN:
+                # Player continues after completing the exercise
+                pygame.time.set_timer(pygame.USEREVENT + 1, 0)
+                self.game.change_state('playing')
+            elif event.key == pygame.K_RETURN:
                 self.check_answer()
             elif event.key == pygame.K_BACKSPACE:
                 self.input_text = self.input_text[:-1]
@@ -49,6 +56,9 @@ class ExerciseState:
                 # Add character to input
                 if event.unicode and len(self.input_text) < 20:
                     self.input_text += event.unicode
+        elif event.type == pygame.USEREVENT + 1:
+            pygame.time.set_timer(pygame.USEREVENT + 1, 0)
+            self.game.change_state('playing')
 
     def check_answer(self):
         """Check if the answer is correct"""
@@ -56,8 +66,9 @@ class ExerciseState:
             self.feedback = "CORRECT! Well done!"
             self.feedback_color = GREEN
             self.game.complete_exercise()
-
-            # Return to game after delay
+            # Mark exercise as completed and start a short timer in case the
+            # player does not continue manually
+            self.exercise_complete = True
             pygame.time.set_timer(pygame.USEREVENT + 1, 1000)
         else:
             self.feedback = "Try again! Check your answer."
@@ -65,11 +76,8 @@ class ExerciseState:
 
     def update(self, dt):
         """Update exercise state"""
-        # Check for return to game event
-        for event in pygame.event.get([pygame.USEREVENT + 1]):
-            if event.type == pygame.USEREVENT + 1:
-                pygame.time.set_timer(pygame.USEREVENT + 1, 0)  # Cancel timer
-                self.game.change_state('playing')
+        # No continuous updates needed here
+        pass
 
     def draw(self, screen):
         """Draw the exercise screen"""
@@ -140,3 +148,8 @@ class ExerciseState:
         inst2 = self.font.render("Press ESC to skip (lose points)", True, RED)
         screen.blit(inst1, (box_x + 50, box_y + box_height - 80))
         screen.blit(inst2, (box_x + 50, box_y + box_height - 50))
+
+        if self.exercise_complete:
+            cont = self.font.render("Press ENTER to continue", True, BLUE)
+            cont_rect = cont.get_rect(center=(WINDOW_WIDTH // 2, box_y + box_height - 20))
+            screen.blit(cont, cont_rect)
