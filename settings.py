@@ -23,7 +23,8 @@ BROWN = (139, 69, 19)
 
 # Player settings
 PLAYER_SPEED = 300  # pixels per second
-PLAYER_JUMP_POWER = -500
+# Jump power tuned so player can reach mid-level platforms
+PLAYER_JUMP_POWER = -650
 PLAYER_WIDTH = 32
 PLAYER_HEIGHT = 48
 
