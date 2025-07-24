@@ -28,6 +28,8 @@ class Game:
         self.stones_collected = 0
         self.total_stones = 0
         self.cutscene_shown = False
+        # Stone currently awaiting exercise completion
+        self.pending_stone = None
 
         # Initialize states
         self.states = {
@@ -82,9 +84,17 @@ class Game:
         self.change_state('menu')
 
     def collect_stone(self):
-        """Called when player collects a time stone"""
-        self.stones_collected += 1
-        self.score += STONE_SCORE
+        """Collect the pending time stone after a successful exercise"""
+        if self.pending_stone:
+            # Remove the stone sprite from all groups
+            self.pending_stone.kill()
+            self.pending_stone = None
+            self.stones_collected += 1
+            self.score += STONE_SCORE
+
+    def clear_pending_stone(self):
+        """Discard the pending stone without collecting it"""
+        self.pending_stone = None
 
     def complete_exercise(self):
         """Called when player completes an exercise"""

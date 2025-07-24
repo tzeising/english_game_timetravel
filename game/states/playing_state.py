@@ -137,13 +137,15 @@ class PlayingState:
             if self.game.lose_life():
                 return
 
-        # Player vs stones
-        stone_hits = pygame.sprite.spritecollide(self.player, self.stones, True)
+        # Player vs stones (do not remove until exercise is solved)
+        stone_hits = pygame.sprite.spritecollide(self.player, self.stones, False)
         for stone in stone_hits:
-            self.game.collect_stone()
-            # Show exercise
+            # Store the stone so it can be removed after the exercise
+            self.game.pending_stone = stone
+            # Show exercise challenge
             self.game.states['exercise'].set_stone(stone.stone_id)
             self.game.change_state('exercise')
+            break
 
         # Player vs portal
         if self.portal.unlocked and self.player.rect.colliderect(self.portal.rect):
